@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head> 
+	<meta charset="utf-8">
+	<title>Лабораторная 5</title>
+</head>
+
+<body>
+
+
+        	<h1 >Лабораторная 5</h1>
+
+
+
+        	<p>Задание 1:</p>
+
+            <script type="text/javascript">                             //Задание 1
+            	
+                let instance = {
+                    propertyA: 222,
+                    propertyB: 444,
+                }
+
+                document.write('<p>instance.propertyA = ' + instance.propertyA);
+                document.write('<p>instance.propertyB = ' + instance.propertyB);
+                document.write('<hr/>');
+
+                instance.propertyA = 333;
+                instance["propertyB"] = 555;
+
+                document.write('<p>instance.propertyA = ' + instance.propertyA);
+                document.write('<p>instance.propertyB = ' + instance.propertyB);
+                document.write('<hr/>');
+
+                document.write('<p>instance = ' + instance);
+
+            </script>	
+
+
+
+            <p>Задание 2:</p>
+
+            <script type="text/javascript">                              //Задание  2
+                
+                let point = new Object();
+
+                point.x = 10;
+                point.y = 15;
+
+                point.f = function() {
+                    document.write('<p>x = ' + point.x + '<p>y = ' + point.y) ;
+                };
+
+                point.f();
+
+            </script>   
+
+
+
+            <p>Задание 3:</p>
+
+            <script type="text/javascript">                               //Задание  3
+                
+                let person = {
+                    firstName: 'Jim',
+                    lastName: 'Rainbow',
+                    age: 30,
+                    occupation: 'Web Developer',
+					skill: 'JavaScript',
+                };
+
+                document.write('<p>' + person.firstName + ' ' + person.lastName);
+
+                person.age = 25;
+                document.write('<p>Age: ' + person.age + ' y.o. ');
+                document.write('<p>Occupation: ' + person.occupation);
+                document.write('<p>Skill: ' + person.skill);
+
+            </script>   
+
+
+
+            <p>Задание 4:</p>
+
+            <script type="text/javascript">                               //Задание 4
+                
+                let human = {
+                    firstName: 'Ivan',
+                    secondName: 'Ivanov',
+                    age: 24,
+                    occupation: {
+                        company: 'ZIEIT',
+                        position: 'Teacher',
+                    }
+                };
+
+                human.occupation1 = {
+                    company: 'Microsoft',
+                    position: 'Web Developer',
+                };
+
+                document.write(
+                    '<p>Name: ' + human.firstName + ' ' + human.secondName);
+                document.write(
+                    '<p>Age: ' + human.age + ' ' + 'y.o.');
+                document.write(
+                    '<p>Occupation 1: '+human.occupation.company+' ('+human.occupation.position+')');
+                document.write(
+                    '<p>Occupation 2: '+human.occupation1.company+' ('+human.occupation1.position+')');
+
+
+            </script>   
+
+
+
+            <p>Задание 5:</p>
+
+            <script type="text/javascript">                              //Задание 5
+                
+                let human1 = new Object();
+
+                human1.firstName = 'Oleg';
+                human1.secondName = 'Olegovich';
+                human1.age = 32;
+
+                human1.occupation = new Object();
+
+                human1.occupation.company = 'Microsoft';
+                human1.occupation.position = 'Web Developer';
+
+                document.write(
+                    '<p>Name: ' + human1.firstName + ' ' + human1.secondName);
+                document.write(
+                    '<p>Age: ' + human1.age + ' ' + 'y.o.');
+                document.write(
+                    '<p>Occupation: '+human1.occupation.company+' ('+human1.occupation.position+')');
+
+            </script> 
+
+                                                     
+            <p>Задание 6:</p>                  
+            <a onclick="human2.changeWork(); human2.showInfo();" class="button">Change occupation</a>
+
+            <p id="outName">Name: </p>
+            <p id="outAge">Age: </p>
+            <p id="outOccup">Occupation: </p>
+
+            <script type="text/javascript">
+														//задание 6
+                let human2 = {  
+                    firstName: 'Andrey',
+                    secondName: 'Ivanov',
+                    age: 32,
+                    occupation: "<img src='microsoft.png' width='93px;' height='20px;'/>",
+                };
+
+                human2.showInfo = function() {
+                    document.getElementById('outName').innerHTML = '<p>Name: ' + this.firstName + ' ' + this.secondName;
+                    document.getElementById('outAge').innerHTML = '<p>Age: ' + this.age + ' ' + 'y.o.';
+                    document.getElementById('outOccup').innerHTML = '<p>Occupation: ' + this.occupation;
+                };
+
+                human2.changeWork = function() {
+                    this.occupation = prompt('Input new occupation:');
+                };
+
+                human2.showInfo();
+                
+            </script> 
+
+
+
+            <p>Задание 7:</p>
+
+            <script type="text/javascript">             //Задание 7
+                
+                let builder = new Object();
+                builder.createRoof = function() { document.write("<img src='Roof.png'/><br>")};
+                builder.createSecondFloor = function() { document.write("<img src='SecondFloor.png'/><br>")};
+                builder.createFirstFloor = function() { document.write("<img src='FirstFloor.png'/><br>")};
+                builder.createBasement = function() { document.write("<img src='Basement.png'/><br>")};
+ 
+                builder.createRoof();           //дом
+                builder.createSecondFloor();
+                builder.createFirstFloor();
+                builder.createBasement();
+                document.write("<br>");
+                builder.createSecondFloor(); //дом без крыши и подвала
+                builder.createFirstFloor();
+
+            </script> 
+
+
+
+            <p>Задание 8:</p>
+
+            <script type="text/javascript">             //задание 8
+                    
+                let house = {
+                    Roof: "<img src='Roof.png'/><br>",
+                    SecondFloor: "<img src='SecondFloor.png'/><br>",
+                    FirstFloor: "<img src='FirstFloor.png'/><br>",
+                    Basement: "<img src='Basement.png'/><br>",
+                    Adress: '<p> UK. London. Baker st., 221b <hr/>',
+                };
+
+                for (let i in house) { document.write(house[i]); }
+
+                let arr = [];
+                let ind = 0;
+                arr[0] = true;
+                arr[3] = false;
+                arr[4] = 1;
+                arr[122] = 'people';
+                for (ind in arr) { console.log(ind); }
+                console.log(arr);
+
+            </script> 
+
+
+
+            <p>Задание 9:</p>
+
+            <script type="text/javascript">             // задание 9
+                    
+                let house1 = {
+                    Roof: "<img src='Roof.png'/><br>",
+                    SecondFloor: "<img src='SecondFloor.png'/><br>",
+                    FirstFloor: "<img src='FirstFloor.png'/><br>",
+                    Basement: "<img src='Basement.png'/><br>",
+                    Adress: '<p> UK. London. Baker st., 221b <hr/>',
+                };
+
+                document.write(house1.Roof);
+
+                if ('ThirdFloor' in house1) { document.write(house["ThirdFloor"]); }
+                else { document.write(house["SecondFloor"]); }
+
+                document.write(house1.SecondFloor);
+                document.write(house1.FirstFloor);
+                document.write(house1.Basement);
+                document.write(house1.Adress);
+
+
+            </script> 
+
+
+
+            <p>Задание 10:</p>
+
+            <script type="text/javascript">             //задание 10
+                    
+                let house2 = {
+                    Roof: "<img src='Roof.png'/><br>",
+                    SecondFloor: "<img src='SecondFloor.png'/><br>",
+                    FirstFloor: "<img src='FirstFloor.png'/><br>",
+                    Basement: "<img src='Basement.png'/><br>",
+                    Adress: '<p> UK. London. Baker st., 221b <hr/>',
+                };
+
+                if ('SecondFloor' in house2) { delete house2.SecondFloor; delete house2.Roof } //удалить второй этаж и крышу
+                for (let i in house2) { document.write(house[i]); }
+
+            </script> 
+
+
+</body>
+
+</html>

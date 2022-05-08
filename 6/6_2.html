@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="..\..\css\style_tur.css">
+    <link rel="icon" href="..\..\img\tur_icon.png" type="image/png" sizes="50x50">
+
+    <title>Задание 2</title>
+  </head>
+  <body >
+
+    <h1>Задание 2</h1>
+    
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    let vacation = {
+        Турция: {
+          name: 'Турция',
+          price: 2800,
+          img: "turkey.jpg",
+          description:
+            "Государство на юго-востоке Европы и юго-западе Азии, культура которого сочетает древнегреческие, персидские, римские, византийские и османские традиции."
+        },
+        Египет: {
+          name: 'Египет',
+          price: 2000,
+          img: "egypt.jpg",
+          description:
+            "Страна в Северо-Восточной Африке и на Ближнем Востоке. О ее богатой истории, насчитывающей более пяти тысяч лет, напоминают археологические памятники в плодородной долине реки Нил, среди которых пирамиды Гизы, Большой сфинкс, а также Карнакский храм"
+        },
+        Испания: {
+          name: 'Испания',
+          price: 4500,
+          img: "spain.jpg",
+          description:
+            "Европейская страна, расположенная на Пиренейском полуострове. Территория Испании разделена на 17 автономных регионов. В столице страны, Мадриде, находятся Королевский дворец и музей Прадо, где хранятся произведения европейских мастеров."
+        },
+        Франция: {
+          name: 'Франция',
+          price: 3500,
+          img: "france.jpg",
+          description:
+            "Это страна в Западной Европе, на территории которой находятся средневековые города, альпийские деревни и пляжи Средиземного моря."
+        },
+        Сомали: {
+          name: 'Сомали',
+          price: 10,
+          img: "somali.jpg",
+          description:
+            "Восточноафриканское государство. В результате гражданской войны и деятельности сепаратистов Сомали на долгое время фактически прекратило своё существование и распалось на множество частей."
+        }
+    };
+
+    for (key in vacation) {
+      document.write(
+        '<div class="card" style="width: 30rem; margin: 20px;"><img src="' +
+          vacation[key].img +
+        '" class="card-img-top"><div class="card-body">' +
+        '<h5 class="card-title">' +
+          vacation[key].name + ' ( ' + vacation[key].price + ' грн. )' +
+        '</h5><p class="card-text">' +
+          vacation[key].description +
+        '<br><br><a onclick="getInfo(' + vacation[key].price + ')" class="btn btn-primary" style="color: white;">Выбрать эту страну</a></div></div>' 
+
+      )
+    }
+
+    let order = {
+      name: 'none',
+      price: 1,
+      people: 1,
+	  day:1,
+      
+    };
+
+    function getInfo(p) { 
+        order.price = p;
+        printOrder();
+        window.scrollTo(0,document.body.scrollHeight);
+    }
+
+    function printOrder() {
+      document.getElementById('counterPeople').innerHTML = '<p style="color: black;">Количество человек: ' + order.people;
+	  document.getElementById('counterDay').innerHTML = '<p style="color: black;">Количество дней: ' + order.day;
+      document.getElementById('price').innerHTML = '<p id="price"> Цена: ' + (order.price*order.people*order.day) + ' грн.';
+    }
+
+    function calcOrder(sign) {
+      if (sign ) { order.people++; }
+      else if (sign == false && order.people > 1) { order.people--; }
+      printOrder();
+    }
+	function calcOrder2(sign) {
+      if (sign ) { order.day++; }
+      else if (sign == false && order.day > 1) { order.day--; }
+      printOrder();
+    }
+
+</script>
+
+<div>
+  
+  
+        
+          <p id="counterPeople" style= "color: red;">Выберите страну</p>
+          <a onclick="calcOrder(false)" style="cursor: pointer;" class="unselectable">-</a> 
+          <a onclick="calcOrder(true)" style="cursor: pointer;" class="unselectable">+</a>
+		  <p id="counterDay" style= "color: red;">Выберите страну</p>
+		  <a onclick="calcOrder2(false)" style="cursor: pointer;" class="unselectable">-</a> 
+          <a onclick="calcOrder2(true)" style="cursor: pointer;" class="unselectable">+</a>
+        
+        <p id="price"></p>
+ 
+</div>
+
+
+
+  </body>
+</html>

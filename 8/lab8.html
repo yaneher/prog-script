@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная 8</title>
+
+    
+</style>
+</head>
+
+<body>
+    
+        	<h1>Лабораторная 8</h1>
+
+
+
+            <p>Задание 1:</p>
+
+            <form name="sel">
+                
+                <table>
+                        <tr>
+                            <td><p>Логин</p></td>
+                            <td><input name="id" size=20 onblur="this.value=this.value.toUpperCase();"></td>
+                        </tr>
+                        <tr>
+                            <td><p>Пароль</p></td>
+                            <td><input type="password" name="pwd" size=20 onFocus="this.select();"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input type="password" name="pwd1" size=20 onFocus="this.select();" placeholder= "Проверка пароля"></td>
+                        </tr>
+                </table>
+                <input type="button" value="Готово" onclick="checkPwd();">
+                <input type="reset" value="Сброс">
+
+            </form>               
+
+            <script type="text/javascript">                             
+																	//задание 1
+                function checkPwd() {
+
+                    if ( document.sel.pwd.value == document.sel.pwd1.value ) {
+                        alert("Вы загерестрированы.\nЛогин:"
+                        + document.sel.id.value
+                        + "\nПароль:" 
+                        + document.sel.pwd.value);
+                    } else {
+                        alert("Пароли не совпадают");
+                    }
+                    
+                }
+
+            </script>
+
+
+			<p>Задание 2:</p>
+            
+            <input type="button" value="Запустить" onclick="sumInput();">
+
+            <script type="text/javascript">
+
+                function sumInput() {
+																		//задание 2
+                    let numbers = [];
+
+                    while (true) {
+
+                        let value = prompt("Введите число:", 0);
+
+                        if ( value === "" || value === null || !isFinite(value)) break;
+
+                        numbers.push(+value);
+                    }
+
+                    let sum = 0;
+
+                    for(let i of numbers) {
+                        sum += i;
+                    }
+
+                    alert('Сумма введённых чисел: '+sum);
+                }
+
+            </script>
+
+
+
+            <p>Задание 3:</p><input name="text" size=20 onblur="this.value=ucFirst(this.value)" placeholder= "Введите текст">
+
+            <script type="text/javascript">
+																	//задание 3
+                function ucFirst(str) {
+                    if (!str) return "";
+                    return str[0].toUpperCase() + str.slice(1);
+                }
+
+            </script>
+
+
+            <p>Задание 4:</p>
+
+                <a href="lab8_4.html" target="_blank">Открыть</a>
+
+
+    
+                <p>Задание 5:</p>
+
+            <script type="text/javascript">
+                                              //задание 5
+                let arr1 = [1, 6, 3, 9, 8, 2, 3, 4, 7, 2, 3, 8 ,9];
+
+                let arr1_mapped = arr1.map(elem => elem * 10);
+
+                document.write('<p>1: <br>' + arr1 + '<hr>');
+                document.write('<p>2(умноженное на 10): <br>' + arr1_mapped);
+                
+                console.log(arr1_mapped);
+
+            </script>
+
+
+
+</body>
+</html>

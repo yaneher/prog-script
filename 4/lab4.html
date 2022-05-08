@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head> 
+	<meta charset="utf-8">
+	<title>Лабораторная 4</title>
+</head>
+
+<body>
+    
+        	<h1>Лабораторная 4</h1>
+
+        	<p>Задание 1:</p> 
+
+            <script type="text/javascript">             // Задание 1
+            	
+                function MyFirstFunction() {
+        			document.write("<p>Hello from MyFirstFunction!"); // <p> Определяет текстовый абзац
+        			document.write("<p>How are you?");
+        			document.write("<p>Goodbye!");
+				}
+                                                           //<br> устанавливает перевод строки в том месте, где этот тег находится.В отличие от тега абзаца <p>,  не добавляет пустой отступ перед строкой
+				function MySecondFunction() {
+					document.write("<p>Hello from MySecondFunction!");
+				}
+
+				MyFirstFunction();
+				document.write("<hr/>");
+				MySecondFunction();
+				document.write("<hr/>");
+
+            </script>	
+
+            <a onclick="zad3()" class="button">Запустить 3 задание</a> 
+            <hr/>
+
+            <p id="outName">Имя: не введено</p>
+            <p id="outSname">Фамилия: не введено</p>
+            <p id="outAge">Возраст: не введен</p>
+
+            <script type="text/javascript">				//задание  2
+            	
+                let name, sname, age;
+        
+    			function ask() {
+        			name = prompt('Введите свое имя: ');
+        			sname = prompt('Введите свою фамилию: ');
+        			age = prompt('Введите свой свозраст: ');
+   				}                                                     //тег <hr> Рисует горизонтальную линию, которая по своему виду зависит от используемых параметров, а также браузера.
+
+    			function say() {
+                    document.getElementById('outName').innerHTML = "<p>Имя: " + name + "<br />";
+                    document.getElementById('outSname').innerHTML = "<p>Фамилия: " + sname + "<br />";
+                    document.getElementById('outAge').innerHTML = "<p>Возраст: " + age + "<br />";
+    			}
+
+                function zad3() {
+    			    do {                                    // задание 3
+       			      	ask();
+        			    say();
+        			    repeater = confirm('Пройти заполнение еще раз?');
+    			    } while (repeater); 
+                }
+
+            </script>
+
+
+
+            <p>Задание 4:</p>
+
+            <script type="text/javascript">             // задание 4
+                
+                let a = 3;
+                let b = 11;
+                let x1, x2;
+
+                function sum1() {
+                    let result = a + b;
+                    document.write("<p>Sum1 result: " + result);
+                }
+
+                function sum2(x1, x2) {
+                    let result = x1 + x2;
+                    document.write("<p>Sum2 result: " + result);
+                }
+
+                sum1();
+                sum2(); // без параметров 
+                sum2(a, b);  // с параметрами
+
+            </script>
+
+
+
+            <p>Задание 5:</p>
+
+            <script type="text/javascript">                 //Задание 5
+                
+                function print(msg, count = 3) {
+
+                    for (let i = 0; i < count; i++) {
+                        document.write("<p>" + msg);
+                    }
+
+                    document.write("<hr/>");
+
+                }
+
+                print("good morning");       
+                print("good evening", 5);   
+
+            </script>		
+
+
+
+            <p>Задание 6:</p>
+
+            <script type="text/javascript">                 //задание 6
+
+                function sum(a, b) {
+                    return a + b;
+                }
+
+                function pow(a, b) {
+                    let result = a;
+                    for(let i = 1; i < b; i++) { result *= a; }
+                    return result;
+                }
+
+                let sumResult = sum(4, 5);  
+                let powResult = pow(3, 3);  
+
+                document.write("<p>Суммирование = " + sumResult);
+                document.write("<p>Степень = " + powResult);
+
+            </script>   
+
+
+
+   
+                <p>Задание 7:</p>                   
+                    <input type="text" id="a" style="max-width: 100px;" >                
+                    <input type="text" id="operator" style="max-width: 100px;" >
+                    <input type="text" id="b"style="max-width: 100px;" >
+ 
+                <a onclick="zad7()" >Вычислить</a>
+                <hr/>
+                <p id="out">Результат</p>
+
+            <script type="text/javascript">
+                                                              //задание 7
+                let num1, num2, operator, result; 
+
+                function zad7() {
+
+                num1 = document.getElementById('a').value;
+                num1 = +num1;
+                num2 = document.getElementById('b').value;
+                num2 = +num2;
+                operator = document.getElementById('operator').value;
+
+                function pl() {
+                    return num1 + num2;
+                }
+
+                function mi() {
+                    return num1 - num2;
+                }
+
+                function pr() {
+                    return num1 * num2;
+                }
+
+                function dv() {
+                    return num1 / num2;
+                }
+
+                switch(operator) {
+
+                    case '+':
+                        result = pl();
+                        break;
+
+                    case '-':
+                        result = mi();
+                        break;
+
+                    case '*':
+                        result = pr();
+                        break;
+
+                    case '/':
+                        result = dv();
+                        break;
+
+                    case '^': 
+                        result = Math.pow(num1, num2); 
+                        break;
+
+                    case 'root': 
+                        result = Math.pow(num1, 1/num2);
+                        break;
+
+                    default:
+                        result = 'wrong_operator';
+
+                }
+
+                if (result == undefined) { document.getElementById('out').innerHTML = "Не хватает данных"}
+                else if (result == 'wrong_operator') { document.getElementById('out').innerHTML = "Вы ввели недопустимый оператор (возможные: + - * / ^ root)" }
+                else if (isNaN(result)) { document.getElementById('out').innerHTML = "Вы ввели недопустимые значения" }
+                else { document.getElementById('out').innerHTML = "Результат: " + result; }
+
+            }
+
+            </script>
+
+
+
+            <p>Задание 8:</p>
+
+            <script type="text/javascript">                 //задание 8
+
+                function max(a, b, c) {
+                    console.log();
+                    let maxValue = Number.NEGATIVE_INFINITY;   //Объект Number является объектом-обёрткой, позволяющей  работать с числовыми значениями. Его параметр  NEGATIVE_INFINITY	представляет значение отрицательной бесконечности.
+                    for (let i = 0; i < arguments.length; i++) { // arguments это похожий на массив объект, который содержит аргументы, переданные в функцию.
+                        if (arguments[i] > maxValue) maxValue = arguments[i];
+                    }
+                    return maxValue;
+                }
+                let res = max(-33, 33, 777, -66, -22, 888);
+                document.write('<p>С передачей аргументов = ' + res);
+                res = max();
+                document.write('<p>Без аргументов = ' + res); // проверка будет ли работать если не передавать параметры
+
+            </script>
+
+
+
+           <p>Задание 9:</p>
+
+            <script type="text/javascript">                 //Задание 9
+
+                function f(x, y, z) {
+                    if (arguments.length <3) {
+                        document.write('<p>Менее трёх аргументов - ошибка! Введено аргументов: ' + arguments.length);
+                    } 
+					 else if (arguments.length >3) {
+                        document.write('<p>Более трёх аргументов - ошибка! Введено аргументов: ' + arguments.length);
+                    } 
+					else {
+                        document.write('<p>Правильный вызов функции. Аргументы: ');
+                        for (let i = 0; i < arguments.length; i++) {
+                            document.write(arguments[i] + ', ');
+                        }
+                    }     
+                }
+
+                f(1, 2, 3, 4); // больше 3 аргументов
+                f(1, 2, 3); // 3 аргумента
+                f(1, 2);// меньше 3 аргументов
+
+            </script>
+
+</body>
+
+</html>

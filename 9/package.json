@@ -1,0 +1,16 @@
+{
+  "name": "lab9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nw src/",
+    "prod": "nwbuild --platforms win64 --buildDir dist/ src/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nw": "^0.45.6",
+    "nw-builder": "^3.5.7"
+  }
+}

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лабораторная 7</title>
+</head>
+
+<body>
+    
+        	<h1 >Лабораторная 7</h1>
+
+
+                          
+                <p>Задание 1:</p>    
+
+            <script type="text/javascript">                      //задание 1         
+                
+                function btnClick() {
+
+                    let Txt1 = "";
+                    let Txt2 = "";
+                    Txt1 = document.Test.bt.value;
+                    Txt2 = document.Test.bt.name;
+                    document.getElementById('ex1').innerHTML="<hr>"+"<p>Вы нажали кнопку: "+Txt1.bold() + "<br> с именем: " + Txt2.bold() + "<hr>";
+
+                }
+
+            </script> 
+
+            <div id="ex1"></div>
+            <form name="Test"> 
+                <input type="button" name="bt" value="Щелкни здесь!" onclick="btnClick();">
+
+                        
+                <p>Задание 2:</p>                     
+
+            <form name="Test">
+                <p>Флажок:  <input type="checkbox" name="ch" /> <br /></p>
+
+                <input
+                    type="button"
+                    value="Смена состояния"
+                    onclick="document.Test.ch.click();"
+                />
+            </form>
+
+
+
+            <p>Задание 3:</p>                  
+               
+
+            <form name="Test1">
+
+                <p><input type="radio" name="Sex" value="Man" checked> Мужской</p>
+                <p><input type="radio" name="Sex" value="Woman"> Женский</p>
+                <input type="button" value="Смена состояния" onclick="btnClick3();">
+
+            </form>
+
+            <script type="text/javascript">                             
+                
+                function btnClick3() {           //задание 3
+                    if(document.Test1.Sex[0].checked) {
+                        document.Test1.Sex[1].click();
+                    } else {
+                        document.Test1.Sex[0].click();
+                    }
+                }
+
+            </script> 
+
+
+
+            <p>Задание 4:</p>             
+
+            <script type="text/javascript">                             
+                
+                function btnClick4() {     //задание 4
+                    let sI=document.Test4.Item.selectedIndex;
+                    let Txt="";
+                    Txt="Предложено "+document.Test4.Item.length+" напитков"+
+                        "\nВыбран "+document.Test4.Item.options[sI].text+
+                        " (value="+document.Test4.Item.options[sI].value+ 
+                        ", index=" + document.Test4.Item.options[sI].index +")";
+                    if(document.Test4.Item.options[sI].deafaultSelected) {
+                        Txt+="\nЭтот напиток выбирается по умолчанию";
+                    }
+                    alert(Txt);
+                }
+
+            </script> 
+
+            <form name="Test4">
+                
+                <select name="Item" size="5">
+                    <option value="tea" selected>Чай
+                    <option value="coffee" selected>Кофе
+                    <option value="milk" selected>Молоко
+                    <option value="cocoa" selected>Какао
+                    <option value="juice" selected>Сок
+                </select>
+
+                <input type="button" value="кофе" onclick="Test4.Item.options[1].selected=true;">
+                <input type="button" value="Итого" onclick="btnClick4();">
+
+            </form>
+
+
+
+            <p>Задание 5:</p>                   
+
+            <form name="Sel">
+                
+                <select name="ListOfLinks"></select>
+
+                <input type="button" value="Перейти" onclick="window.location.href=document.links[Sel.ListOfLinks.selectedIndex];"/>
+
+            </form>
+
+            <a href="https://www.rozetka.com.ua/"></a>
+            <a href="https://www.allo.ua/"></a>
+            <a href="https://www.olx.ua/"></a>
+            <a href="https://www.zieit.edu.ua/"></a>
+
+            <script>                              //задание 5
+                
+                for (let i = 0; i < document.links.length; i++) {
+                    document.Sel.ListOfLinks.options[i] = new Option( document.links[i] );
+                }
+                document.Sel.ListOfLinks.selectedIndex = 0;
+
+            </script> 
+
+
+
+            <p>Задание 6:</p>                  
+              
+
+        <form NAME="Sel1">
+
+            <table>
+                    <tr>
+                        <td><p>Фамилия:</p></td>
+                        <td><input style="font-size: 26px; " name="SName" onblur="this.value=this.value.toUpperCase()"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Имя:</p></td>
+                        <td><input style="font-size: 26px;" name="Name" onblur="this.value=this.value.toUpperCase()"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Возраст:</p></td>
+                        <td><input style="font-size: 26px; max-width: 50px;" name="Age" onblur="this.value=this.value.toUpperCase()"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Телефон:</p></td>
+                        <td><input style="font-size: 26px; max-width: 250px;" name="Phone" onblur="this.value=this.value.toUpperCase()"></td>
+                    </tr>
+
+            </table>
+
+            <input type="button" value="Готово" onclick="Complete();">
+            <input type="reset" value="Сброс">
+
+        </form>
+
+        <script>
+
+            function Complete() {
+                if (checkAge(document.Sel1.Age.value)) {
+                    let Elem="Фамилия: " + document.Sel1.SName.value +
+                            "\nИмя: " + document.Sel1.Name.value +
+                            "\nВозраст: " + document.Sel1.Age.value +
+                            "\nТелефон: " + document.Sel1.Phone.value;
+                    alert(Elem);
+                } else {alert("Вам еще не исполнилось 18 лет, вам всего "+ document.Sel1.Age.value );}
+            }
+
+            function checkAge(age) {
+                if (age >= 18) return true;
+                else return false;
+            }
+
+        </script>  
+
+
+
+        <p>Задание 7:</p>              
+
+        <form name="Sel2">
+            
+            <label><p><input type="radio" name="Code" value="Good" onclick="if(this.checked)CheckRadio(this.form, this.value);"> 1</p></label> 
+            <label><p><input type="radio" name="Code" value="Bad" onclick="if(this.checked)CheckRadio(this.form, this.value);"> 2</p></label>
+            
+            <textarea name="Letter" rows="3" cols="35"></textarea>
+            <br>
+            <input type="reset" value="Сброс">
+            
+        </form> 
+
+        <script type="text/javascript">
+											//задание 8
+            let OK = "Тетя Эльза здорова. \nЮстас.";
+            let Problem = "Тетя Эльза больна. \nЮстас.";
+
+            function getDate() {
+                let today = new Date();
+                return today.toLocaleString() + "\n";
+            }
+
+            function CheckRadio(form, value) {
+                if (value == "Good") form.Letter.value = getDate() + OK;
+                else form.Letter.value = getDate() + Problem;
+            }
+
+        </script>
+
+</body>
+</html>
